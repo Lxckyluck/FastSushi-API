@@ -1,4 +1,4 @@
-function checkBody(body, keys) {
+function CheckBody(body, keys) {
   let isValid = true;
 
   for (const field of keys) {
@@ -10,4 +10,4 @@ function checkBody(body, keys) {
   return isValid;
 }
 
-module.exports = { checkBody };
+module.exports = { CheckBody };
