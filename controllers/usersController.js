@@ -49,7 +49,7 @@ exports.createUser = (req, res) => {
     }
     res
       .status(201)
-      .json({ message: "Utilisateur successfully created", id: insertId });
+      .json({ message: "User successfully created", id: insertId });
   });
 };
 
@@ -84,6 +84,16 @@ exports.logUser = (req, res) => {
   });
 };
 
+exports.logoutUser = (req, res) => {
+  const userId = req.params.id;
+  User.logout(userId, (err) => {
+    if (err) {
+      res.status(500).json({ error: "Error while deleting the user's token" });
+      return;
+    }
+    res.json({ message: "User's token successfully deleted" });
+  });
+};
 // Handle updateUser Request
 exports.updateUser = (req, res) => {
   const userId = req.params.id;

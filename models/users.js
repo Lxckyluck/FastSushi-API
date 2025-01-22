@@ -86,9 +86,35 @@ const User = {
           createSecretKey,
           { expiresIn: "24h" }
         );
-        callback(null, { user, token });
+
+        // Update the user with the new token
+        db.query(
+          "UPDATE users SET token = ? WHERE id = ?",
+          [token, user.id],
+          (err, updateResult) => {
+            if (err) {
+              callback(err, null);
+              return;
+            }
+            callback(null, { user, token });
+          }
+        );
       });
     });
+  },
+
+  logout: (id, callback) => {
+    db.query(
+      "UPDATE users SET token = '' WHERE id = ?",
+      [id],
+      (err, result) => {
+        if (err) {
+          callback(err, null);
+          return;
+        }
+        callback(null, result);
+      }
+    );
   },
 
   // SQL QUERY for update name, email, password of the users using the id
