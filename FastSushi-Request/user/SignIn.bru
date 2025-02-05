@@ -1,0 +1,16 @@
+meta {
+  name: SignIn
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/users/signin
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  email: Lucas@Lucas
+  password: MyPassword
+}

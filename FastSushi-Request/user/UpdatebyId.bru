@@ -1,0 +1,21 @@
+meta {
+  name: UpdatebyId
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:3000/users/update/:id
+  body: formUrlEncoded
+  auth: none
+}
+
+params:path {
+  id: 1
+}
+
+body:form-urlencoded {
+  name: newname
+  email: newemail
+  password: newpassword
+}
