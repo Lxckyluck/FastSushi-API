@@ -32,12 +32,17 @@ exports.getUserById = (req, res) => {
 exports.createUser = (req, res) => {
   const newUser = req.body;
   const requiredFields = ["name", "email", "password"];
+  const token = req.headers.token;
 
   if (!CheckBody(newUser, requiredFields)) {
     return res.status(400).json({
       result: "Cannot create a user",
       error: "Missing required fields",
     });
+  }
+
+  if (!token) {
+    return res.status(401).json({ error: "Token missing" });
   }
 
   console.log("Creating user with data:", newUser);

@@ -1,4 +1,4 @@
-const db = require("./connection");
+const db = require("./connections");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const createSecretKey = process.env.JWT_SECRET_KEY;

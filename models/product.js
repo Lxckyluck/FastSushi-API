@@ -1,4 +1,4 @@
-const db = require("./connection");
+const db = require("./connections");
 
 const Product = {
   getAll: (callback) => {
