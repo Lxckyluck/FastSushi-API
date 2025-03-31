@@ -32,17 +32,12 @@ exports.getUserById = (req, res) => {
 exports.createUser = (req, res) => {
   const newUser = req.body;
   const requiredFields = ["name", "email", "password"];
-  const token = req.headers.token;
 
   if (!CheckBody(newUser, requiredFields)) {
     return res.status(400).json({
       result: "Cannot create a user",
       error: "Missing required fields",
     });
-  }
-
-  if (!token) {
-    return res.status(401).json({ error: "Token missing" });
   }
 
   console.log("Creating user with data:", newUser);
@@ -83,7 +78,8 @@ exports.logUser = (req, res) => {
     }
     res.status(200).json({
       message: "User successfully logged in",
-      user: Credentialuser.user,
+      id: Credentialuser.user.id,
+      name: Credentialuser.user.name,
       token: Credentialuser.token,
     });
   });
@@ -96,7 +92,7 @@ exports.logoutUser = (req, res) => {
       res.status(500).json({ error: "Error while deleting the user's token" });
       return;
     }
-    res.json({ message: "User's token successfully deleted" });
+    res.json({ message: "User successfully disconnected", });
   });
 };
 // Handle updateUser Request
@@ -108,7 +104,10 @@ exports.updateUser = (req, res) => {
       res.status(500).json({ error: "Error while updating the user" });
       return;
     }
-    res.json({ message: "User successfully updated" });
+    res.status(200).json({
+      message: "User successfully updated",
+      Informations: updatedUser
+    });
   });
 };
 
