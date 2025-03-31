@@ -82,7 +82,7 @@ const User = {
 
         // Generate a new JWT Token
         const token = jwt.sign(
-          { id: user.id, name: user.name, role: user.role },
+          {name: user.name, role: user.role },
           createSecretKey,
           { expiresIn: "24h" }
         );
@@ -119,25 +119,48 @@ const User = {
 
   // SQL QUERY for update name, email, password of the users using the id
   update: (id, userData, callback) => {
-    bcrypt.hash(userData.password, 10, (err, hash) => {
-      if (err) {
-        callback(err, null);
+    let updates = [];
+    let values = [];
+  
+    if (userData.name && userData.name.length > 0) {
+      updates.push("name = ?");
+      values.push(userData.name);
+    }
+    if (userData.email && userData.email.length > 0) {
+      updates.push("email = ?");
+      values.push(userData.email);
+    }
+    if (userData.password && userData.password.length > 0) {
+      bcrypt.hash(userData.password, 10, (err, hash) => {
+        if (err) {
+          callback(err, null);
+          return;
+        }
+        updates.push("password = ?");
+        values.push(hash);
+        executeUpdate();
+      });
+    } else {
+      executeUpdate();
+    }
+  
+    function executeUpdate() {
+      if (updates.length === 0) {
+        callback(new Error("Aucune donnée à mettre à jour"), null);
         return;
       }
-      db.query(
-        "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?",
-        [userData.name, userData.email, hash, id],
-        (err, result) => {
-          if (err) {
-            callback(err, null);
-            return;
-          }
-          callback(null, result);
+      let query = `UPDATE users SET ${updates.join(", ")} WHERE id = ?`;
+      values.push(id);
+  
+      db.query(query, values, (err, result) => {
+        if (err) {
+          callback(err, null);
+          return;
         }
-      );
-    });
+        callback(null, result);
+      });
+    }
   },
-
   // SQL QUERY for delete an users using his id
   delete: (id, callback) => {
     db.query("DELETE FROM users WHERE id = ?", [id], (err, result) => {
