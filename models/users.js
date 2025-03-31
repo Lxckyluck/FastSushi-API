@@ -37,13 +37,13 @@ const User = {
       }
       const role = 1;
       const token = jwt.sign(
-        { name: userData.name, role: role },
+        { name: userData.name},
         createSecretKey,
         { expiresIn: "24h" }
       );
       db.query(
-        "INSERT INTO users (name, email, password, token) VALUES (?, ?, ?, ?)",
-        [userData.name, userData.email, hash, token],
+        "INSERT INTO users (name, email, password, token, role) VALUES (?, ?, ?, ?, ?)",
+        [userData.name, userData.email, hash, token, role],
         (err, result) => {
           if (err) {
             callback(err, null);
@@ -82,7 +82,7 @@ const User = {
 
         // Generate a new JWT Token
         const token = jwt.sign(
-          {name: user.name, role: user.role },
+          {name: user.name},
           createSecretKey,
           { expiresIn: "24h" }
         );

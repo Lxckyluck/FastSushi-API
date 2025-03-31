@@ -26,7 +26,8 @@ connection.connect((err) => {
       name VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
       password VARCHAR(255) NOT NULL,
-      token VARCHAR(512) NOT NULL
+      token VARCHAR(512) NOT NULL,
+      role INT NOT NULL
     )
   `;
   connection.query(createUserTableQuery, (err) => {
