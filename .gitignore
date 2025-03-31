@@ -59,7 +59,7 @@ typings/
 
 # connections files
 
-/models/connections.js
+# /models/connections.js
 
 # next.js build output
 .next
