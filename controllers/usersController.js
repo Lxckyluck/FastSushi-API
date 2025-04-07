@@ -47,9 +47,13 @@ exports.createUser = (req, res) => {
       res.status(500).json({ error: "Error while creating the user" });
       return;
     }
-    res
-      .status(201)
-      .json({ message: "User successfully created", id: insertId });
+    res.status(201).json({
+      message: "User successfully created",
+      role: 1,
+      name: newUser.name,
+      id: insertId.insertId,
+      token: insertId.token
+    });
   });
 };
 
@@ -78,6 +82,7 @@ exports.logUser = (req, res) => {
     }
     res.status(200).json({
       message: "User successfully logged in",
+      role: 1,
       id: Credentialuser.user.id,
       name: Credentialuser.user.name,
       token: Credentialuser.token,
