@@ -1,35 +1,29 @@
 const User = require("../models/users");
 const { CheckBody } = require("../modules/checkbody");
 
-// Handle getAll Users Request
-exports.getAllUsers = (req, res) => {
-  User.getAll((err, users) => {
-    if (err) {
-      res.status(500).json({ error: "Error while fetching users data" });
-      return;
-    }
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.getAll();
     res.json(users);
-  });
+  } catch (err) {
+    res.status(500).json({ error: "Error while fetching users data" });
+  }
 };
 
-// Handle GetUsersById Request
-exports.getUserById = (req, res) => {
+exports.getUserById = async (req, res) => {
   const userId = req.params.id;
-  User.getById(userId, (err, user) => {
-    if (err) {
-      res.status(500).json({ error: "Error while fetching this user" });
-      return;
-    }
+  try {
+    const user = await User.getById(userId);
     if (!user) {
-      res.status(404).json({ error: "User not found" });
-      return;
+      return res.status(404).json({ error: "User not found" });
     }
     res.json(user);
-  });
+  } catch (err) {
+    res.status(500).json({ error: "Error while fetching this user" });
+  }
 };
 
-// Handle createUser Request
-exports.createUser = (req, res) => {
+exports.createUser = async (req, res) => {
   const newUser = req.body;
   const requiredFields = ["name", "email", "password"];
 
@@ -41,24 +35,23 @@ exports.createUser = (req, res) => {
   }
 
   console.log("Creating user with data:", newUser);
-  User.create(newUser, (err, insertId) => {
-    if (err) {
-      console.error("Error creating user:", err);
-      res.status(500).json({ error: "Error while creating the user" });
-      return;
-    }
+  try {
+    const insertId = await User.create(newUser);
     res.status(201).json({
       message: "User successfully created",
       role: 1,
       name: newUser.name,
       id: insertId.insertId,
-      token: insertId.token
+      token: insertId.token,
     });
-  });
+  } catch (err) {
+    console.error("Error creating user:", err);
+    res.status(500).json({ error: "Error while creating the user" });
+  }
 };
 
-// Handle LoginUser Request
-exports.logUser = (req, res) => {
+exports.logUser = async (req, res) => {
+  const { email, password } = req.body;
   const requiredFields = ["email", "password"];
 
   if (!CheckBody(req.body, requiredFields)) {
@@ -68,18 +61,8 @@ exports.logUser = (req, res) => {
     });
   }
 
-  const { email, password } = req.body;
-
-  User.login(email, password, (err, Credentialuser) => {
-    if (err) {
-      console.error("Error while logging in the user:", err);
-      res.status(500).json({ error: "Error while logging in the user" });
-      return;
-    }
-    if (!Credentialuser) {
-      res.status(404).json({ error: "Wrong credentials" });
-      return;
-    }
+  try {
+    const Credentialuser = await User.login(email, password);
     res.status(200).json({
       message: "User successfully logged in",
       role: 1,
@@ -87,56 +70,42 @@ exports.logUser = (req, res) => {
       name: Credentialuser.user.name,
       token: Credentialuser.token,
     });
-  });
+  } catch (err) {
+    console.error("Error while logging in the user:", err);
+    res.status(500).json({ error: "Error while logging in the user" });
+  }
 };
 
-exports.logoutUser = (req, res) => {
+exports.logoutUser = async (req, res) => {
   const userId = req.params.id;
-  User.logout(userId, (err) => {
-    if (err) {
-      res.status(500).json({ error: "Error while deleting the user's token" });
-      return;
-    }
-    res.json({ message: "User successfully disconnected", });
-  });
+  try {
+    await User.logout(userId);
+    res.json({ message: "User successfully disconnected" });
+  } catch (err) {
+    res.status(500).json({ error: "Error while deleting the user's token" });
+  }
 };
-// Handle updateUser Request
-exports.updateUser = (req, res) => {
+
+exports.updateUser = async (req, res) => {
   const userId = req.params.id;
   const updatedUser = req.body;
-  User.update(userId, updatedUser, (err) => {
-    if (err) {
-      res.status(500).json({ error: "Error while updating the user" });
-      return;
-    }
+  try {
+    await User.update(userId, updatedUser);
     res.status(200).json({
       message: "User successfully updated",
-      Informations: updatedUser
+      Informations: updatedUser,
     });
-  });
+  } catch (err) {
+    res.status(500).json({ error: "Error while updating the user" });
+  }
 };
 
-exports.updateUserRoleById = (req, res) => {
+exports.deleteUserById = async (req, res) => {
   const userId = req.params.id;
-  const updatedUserRoleById = req.body;
-  User.update(userId, updatedUserRoleById, (err) => {
-    if (err) {
-      res
-        .status(500)
-        .json({ error: "Error while updating the roles of the user" });
-    }
-    res.json({ message: "User Roles Successfully updated" });
-  });
-};
-
-// Handle deleteUser Request
-exports.deleteUserById = (req, res) => {
-  const userId = req.params.id;
-  User.delete(userId, (err) => {
-    if (err) {
-      res.status(500).json({ error: "Error while deleting the user" });
-      return;
-    }
+  try {
+    await User.delete(userId);
     res.json({ message: "User successfully deleted" });
-  });
+  } catch (err) {
+    res.status(500).json({ error: "Error while deleting the user" });
+  }
 };
