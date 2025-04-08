@@ -1,56 +1,57 @@
 const db = require("./connections");
 
 const Product = {
-  // SQL QUERY to get all products
-  getAll: (callback) => {
-    db.query("SELECT * FROM product", (err, results) => {
-      if (err) {
+  // SQL QUERY to get all products using promise
+  getAll: () => {
+    return db
+      .query("SELECT * FROM product")
+      .then(([results]) => results)
+      .catch((err) => {
         console.error("Error fetching all products:", err);
-        return callback(err, null);
-      }
-      callback(null, results);
-    });
+        throw new Error("Error fetching all products");
+      });
   },
 
-  // SQL QUERY to get a product by its ID
-  getById: (id, callback) => {
-    db.query("SELECT * FROM product WHERE id = ?", [id], (err, results) => {
-      if (err) {
-        console.error(`Error fetching product with ID ${id}:`, err);
-        return callback(err, null);
-      }
-      if (results.length === 0) {
-        return callback(new Error("Product not found"), null);
-      }
-      callback(null, results[0]);
-    });
-  },
-
-  // SQL QUERY to create a new product
-  createProduct: (productData, callback) => {
-    const { name, description, price, type, stock, image_url } = productData;
-    db.query(
-      "INSERT INTO product (name, description, price, type, stock, image_url) VALUES (?, ?, ?, ?, ?, ?)",
-      [name, description, price, type, stock, image_url],
-      (err, result) => {
-        if (err) {
-          console.error("Error creating product:", err);
-          return callback(err, null);
+  // SQL QUERY to get a product by its ID using promise
+  getById: (id) => {
+    return db
+      .query("SELECT * FROM product WHERE id = ?", [id])
+      .then(([results]) => {
+        if (results.length === 0) {
+          throw new Error("Product not found");
         }
-        callback(null, { insertId: result.insertId });
-      }
-    );
+        return results[0];
+      })
+      .catch((err) => {
+        console.error(`Error fetching product with ID ${id}:`, err);
+        throw new Error("Error fetching product");
+      });
   },
 
-  // SQL QUERY to delete a product by its ID
-  deleteProductById: (id, callback) => {
-    db.query("DELETE FROM product WHERE id = ?", [id], (err, result) => {
-      if (err) {
+  // SQL QUERY to create a new product using promise
+  createProduct: (productData) => {
+    const { name, description, price, type, stock, image_url } = productData;
+    return db
+      .query(
+        "INSERT INTO product (name, description, price, type, stock, image_url) VALUES (?, ?, ?, ?, ?, ?)",
+        [name, description, price, type, stock, image_url]
+      )
+      .then(([result]) => result.insertId)
+      .catch((err) => {
+        console.error("Error creating product:", err);
+        throw new Error("Error while creating the product");
+      });
+  },
+
+  // SQL QUERY to delete a product by its ID using promise
+  deleteProductById: (id) => {
+    return db
+      .query("DELETE FROM product WHERE id = ?", [id])
+      .then(([result]) => result)
+      .catch((err) => {
         console.error(`Error deleting product with ID ${id}:`, err);
-        return callback(err, null);
-      }
-      callback(null, result);
-    });
+        throw new Error("Error deleting the product");
+      });
   },
 };
 

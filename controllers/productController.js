@@ -1,38 +1,26 @@
-const Product = require("../models/product");
+const product = require("../models/product");
 const { CheckBody } = require("../modules/checkbody");
 
-// Handle getAll Products Request
-exports.getAllProduct = (req, res) => {
-  Product.getAll((err, products) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      return res
-        .status(500)
-        .json({ error: "Error while fetching products data" });
-    }
+exports.getAllProduct = async (req, res) => {
+  try {
+    const products = await product.getAll();
     res.json(products);
-  });
+  } catch (err) {
+    res.status(500).json({ error: "Error while fetching products data" });
+  }
 };
 
-// Handle GetProductById Request
-exports.getProductById = (req, res) => {
+exports.getProductById = async (req, res) => {
   const productId = req.params.id;
-  Product.getById(productId, (err, product) => {
-    if (err) {
-      console.error("Error fetching product by id:", err);
-      return res
-        .status(500)
-        .json({ error: "Error while fetching this product" });
-    }
-    if (!product) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-    res.json(product);
-  });
+  try {
+    const productDetails = await product.getById(productId);
+    res.json(productDetails);
+  } catch (err) {
+    res.status(500).json({ error: "Error while fetching this product" });
+  }
 };
 
-// Handle createProduct Request
-exports.createProduct = (req, res) => {
+exports.createProduct = async (req, res) => {
   const newProduct = req.body;
   const token = req.headers.token;
 
@@ -45,7 +33,6 @@ exports.createProduct = (req, res) => {
     "image_url",
   ];
 
-  // Check if required fields are provided
   if (!CheckBody(newProduct, requiredFields)) {
     return res.status(400).json({
       result: "Cannot create a product",
@@ -53,43 +40,33 @@ exports.createProduct = (req, res) => {
     });
   }
 
-  // Check if token is present
   if (!token) {
     return res.status(401).json({ error: "Token missing" });
   }
 
-  console.log("Creating product with data:", newProduct);
-  Product.createProduct(newProduct, (err, result) => {
-    if (err) {
-      console.error("Error creating product:", err);
-      return res
-        .status(500)
-        .json({ error: "Error while creating the product" });
-    }
+  try {
+    const insertId = await product.createProduct(newProduct);
     res.status(201).json({
       message: "Product successfully created",
-      id: result.insertId,
+      id: insertId,
     });
-  });
+  } catch (err) {
+    res.status(500).json({ error: "Error while creating the product" });
+  }
 };
 
-// Handle deleteProduct Request
-exports.deleteProductById = (req, res) => {
+exports.deleteProductById = async (req, res) => {
   const productId = req.params.id;
   const token = req.headers.token;
 
-  // Check if token is present
   if (!token) {
     return res.status(401).json({ error: "Token missing" });
   }
 
-  Product.deleteProductById(productId, (err) => {
-    if (err) {
-      console.error("Error deleting product:", err);
-      return res
-        .status(500)
-        .json({ error: "Error while deleting the product" });
-    }
+  try {
+    await product.deleteProductById(productId);
     res.json({ message: "Product successfully deleted" });
-  });
+  } catch (err) {
+    res.status(500).json({ error: "Error while deleting the product" });
+  }
 };
