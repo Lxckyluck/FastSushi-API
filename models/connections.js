@@ -1,16 +1,13 @@
-const mysql = require("mysql2");
-const host = process.env.HOST;
-const user = process.env.USER;
-const password = process.env.PASSWORD;
-const database = process.env.DATABASE;
-const port = process.env.PORT;
+const mysql = require("mysql2/promise");
 
-const connection = mysql.createConnection({
-  host: host,
-  user: user,
-  password: password,
-  database: database,
-  port: port,
+const pool = mysql.createPool({
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
 connection.connect((err) => {
@@ -60,4 +57,4 @@ connection.connect((err) => {
   });
 });
 
-module.exports = connection;
+module.exports = pool;
