@@ -5,12 +5,12 @@ const pool = mysql.createPool({
   user: process.env.USER,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
-  waitForConnections: true,
-  connectionLimit: 10,
+  waitForpools: true,
+  poolLimit: 10,
   queueLimit: 0,
 });
 
-connection.connect((err) => {
+pool.connect((err) => {
   if (err) {
     console.error("Erreur de connexion à la base de données :", err);
     return;
@@ -27,7 +27,7 @@ connection.connect((err) => {
       role INT NOT NULL
     )
   `;
-  connection.query(createUserTableQuery, (err) => {
+  pool.query(createUserTableQuery, (err) => {
     if (err) {
       console.error("Erreur lors de la création de la table users :", err);
       return;
@@ -48,7 +48,7 @@ connection.connect((err) => {
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
   `;
-  connection.query(createProductTableQuery, (err) => {
+  pool.query(createProductTableQuery, (err) => {
     if (err) {
       console.error("Erreur lors de la création de la table Product :", err);
       return;
