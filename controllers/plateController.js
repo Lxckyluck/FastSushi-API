@@ -54,6 +54,20 @@ exports.createplate = async (req, res) => {
   }
 };
 
+exports.updateplateById = async (req, res) => {
+  const plateId = req.params.id;
+  const updatedplate = req.body;
+  try {
+    await plate.updateplate(plateId, updatedplate);
+    res.status(200).json({
+      message: "plate successfully updated",
+      Informations: updatedplate,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Error while updating the plate" });
+  }
+};
+
 exports.deleteplateById = async (req, res) => {
   const plateId = req.params.id;
   const token = req.headers.token;

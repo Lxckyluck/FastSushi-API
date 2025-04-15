@@ -54,6 +54,20 @@ exports.createAppetizer = async (req, res) => {
   }
 };
 
+exports.updateAppetizerById = async (req, res) => {
+  const appetizerId = req.params.id;
+  const updatedAppetizer = req.body;
+  try {
+    await appetizer.updateAppetizer(appetizerId, updatedAppetizer);
+    res.status(200).json({
+      message: "Appetizer successfully updated",
+      Informations: updatedAppetizer,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Error while updating the appetizer" });
+  }
+};
+
 exports.deleteAppetizerById = async (req, res) => {
   const appetizerId = req.params.id;
   const token = req.headers.token;

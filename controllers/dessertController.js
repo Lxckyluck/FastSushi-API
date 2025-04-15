@@ -54,6 +54,20 @@ exports.createdessert = async (req, res) => {
   }
 };
 
+exports.updatedessertById = async (req, res) => {
+  const dessertId = req.params.id;
+  const updateddessert = req.body;
+  try {
+    await dessert.updatedessert(dessertId, updateddessert);
+    res.status(200).json({
+      message: "dessert successfully updated",
+      Informations: updateddessert,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Error while updating the dessert" });
+  }
+};
+
 exports.deletedessertById = async (req, res) => {
   const dessertId = req.params.id;
   const token = req.headers.token;
