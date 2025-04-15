@@ -43,6 +43,48 @@ const dessert = {
     }
   },
 
+  // SQL QUERY for update a dessert
+  updatedessert: async (id, dessertData) => {
+    try {
+      let updates = [];
+      let values = [];
+
+      if (dessertData.name) {
+        updates.push("name = ?");
+        values.push(dessertData.name);
+      }
+      if (dessertData.description) {
+        updates.push("description = ?");
+        values.push(dessertData.description);
+      }
+      if (dessertData.price) {
+        updates.push("price = ?");
+        values.push(dessertData.price);
+      }
+      if (dessertData.type) {
+        updates.push("type = ?");
+        values.push(dessertData.type);
+      }
+      if (dessertData.stock) {
+        updates.push("stock = ?");
+        values.push(dessertData.stock);
+      }
+      if (dessertData.image_url) {
+        updates.push("image_url = ?");
+        values.push(dessertData.image_url);
+      }
+      if (updates.length === 0) {
+        throw new Error("No data to update");
+      }
+
+      const query = `UPDATE product SET ${updates.join(", ")} WHERE type = 'dessert' AND id = ?`;
+      values.push(id);
+      await db.execute(query, values);
+    } catch (err) {
+      throw err;
+    }
+  },
+
   // SQL QUERY to delete a dessert by its ID using promise
   deletedessertById: async (id) => {
     try {

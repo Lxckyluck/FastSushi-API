@@ -43,6 +43,48 @@ const plate = {
     }
   },
 
+  // SQL QUERY for update a plate
+  updateplate: async (id, plateData) => {
+    try {
+      let updates = [];
+      let values = [];
+
+      if (plateData.name) {
+        updates.push("name = ?");
+        values.push(plateData.name);
+      }
+      if (plateData.description) {
+        updates.push("description = ?");
+        values.push(plateData.description);
+      }
+      if (plateData.price) {
+        updates.push("price = ?");
+        values.push(plateData.price);
+      }
+      if (plateData.type) {
+        updates.push("type = ?");
+        values.push(plateData.type);
+      }
+      if (plateData.stock) {
+        updates.push("stock = ?");
+        values.push(plateData.stock);
+      }
+      if (plateData.image_url) {
+        updates.push("image_url = ?");
+        values.push(plateData.image_url);
+      }
+      if (updates.length === 0) {
+        throw new Error("No data to update");
+      }
+
+      const query = `UPDATE product SET ${updates.join(", ")} WHERE type = 'plate' AND id = ?`;
+      values.push(id);
+      await db.execute(query, values);
+    } catch (err) {
+      throw err;
+    }
+  },
+
   // SQL QUERY to delete a plate by its ID using promise
   deleteplateById: async (id) => {
     try {

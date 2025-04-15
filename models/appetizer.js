@@ -43,6 +43,48 @@ const Appetizer = {
     }
   },
 
+  // SQL QUERY for update an appetizer
+  updateAppetizer: async (id, AppetizerData) => {
+    try {
+      let updates = [];
+      let values = [];
+
+      if (AppetizerData.name) {
+        updates.push("name = ?");
+        values.push(AppetizerData.name);
+      }
+      if (AppetizerData.description) {
+        updates.push("description = ?");
+        values.push(AppetizerData.description);
+      }
+      if (AppetizerData.price) {
+        updates.push("price = ?");
+        values.push(AppetizerData.price);
+      }
+      if (AppetizerData.type) {
+        updates.push("type = ?");
+        values.push(AppetizerData.type);
+      }
+      if (AppetizerData.stock) {
+        updates.push("stock = ?");
+        values.push(AppetizerData.stock);
+      }
+      if (AppetizerData.image_url) {
+        updates.push("image_url = ?");
+        values.push(AppetizerData.image_url);
+      }
+      if (updates.length === 0) {
+        throw new Error("No data to update");
+      }
+
+      const query = `UPDATE product SET ${updates.join(", ")} WHERE type = 'appetizer' AND id = ?`;
+      values.push(id);
+      await db.execute(query, values);
+    } catch (err) {
+      throw err;
+    }
+  },
+
   // SQL QUERY to delete a appetizer by its ID using promise
   deleteAppetizerById: async (id) => {
     try {
