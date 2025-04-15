@@ -93,3 +93,7 @@ The `controllers folder` manages errors that may occur during the API usage.
 #### Postman
 
 The entire request collection can be found in the `FastSushi-Request` directory. This collection has been created and exported using Postman.
+
+> ⚠️ **Important**
+
+In the header of most of my request I use the environment variables "token" make sure create it in your own environment variables.

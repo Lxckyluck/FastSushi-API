@@ -15,15 +15,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/users/read",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/users/read/",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"users",
-								"read"
+								"read",
+								""
 							]
 						}
 					},
@@ -35,12 +37,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/users/read/:id",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/users/read/:id",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"users",
 								"read",
@@ -49,7 +52,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2",
+									"value": "1",
 									"type": "string"
 								}
 							]
@@ -89,18 +92,19 @@
 								},
 								{
 									"key": "password",
-									"value": "MyPassword",
+									"value": "Lxckyluck",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/users/signup",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/users/signup",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"users",
 								"signup"
@@ -124,7 +128,7 @@
 								},
 								{
 									"key": "email",
-									"value": "Jane@Jane",
+									"value": "Lxckyluck@Luck",
 									"type": "text"
 								},
 								{
@@ -135,12 +139,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/users/update/:id",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/users/update/:id",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"users",
 								"update",
@@ -149,7 +154,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2",
+									"value": "1",
 									"type": "string"
 								}
 							]
@@ -163,12 +168,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/users/delete/:id",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/users/delete/:id",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"users",
 								"delete",
@@ -177,7 +183,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2",
+									"value": "1",
 									"type": "string"
 								}
 							]
@@ -215,18 +221,19 @@
 								},
 								{
 									"key": "password",
-									"value": "MyPassword",
+									"value": "Lxckyluck",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/users/signin",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/users/signin",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"users",
 								"signin"
@@ -241,12 +248,13 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/users/logout/:id",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/users/logout/:id",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"users",
 								"logout",
@@ -255,7 +263,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2",
+									"value": "1",
 									"type": "string"
 								}
 							]
@@ -274,12 +282,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/product/read",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/product/read",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"product",
 								"read"
@@ -345,12 +354,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/product/createProduct",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/product/createProduct",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"product",
 								"createProduct"
@@ -365,12 +375,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/product/read/:id",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/product/read/:id",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"product",
 								"read",
@@ -379,7 +390,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
+									"value": "10",
 									"type": "string"
 								}
 							]
@@ -395,43 +406,36 @@
 							{
 								"key": "Cache-Control",
 								"value": "no-cache",
-								"name": "cache-control",
 								"type": "text"
 							},
 							{
 								"key": "Postman-Token",
 								"value": "<calculated when request is sent>",
-								"name": "postman-token",
 								"type": "text"
 							},
 							{
 								"key": "Host",
 								"value": "<calculated when request is sent>",
-								"name": "host",
 								"type": "text"
 							},
 							{
 								"key": "User-Agent",
 								"value": "PostmanRuntime/7.39.1",
-								"name": "user-agent",
 								"type": "text"
 							},
 							{
 								"key": "Accept",
 								"value": "*/*",
-								"name": "accept",
 								"type": "text"
 							},
 							{
 								"key": "Accept-Encoding",
 								"value": "gzip, deflate, br",
-								"name": "accept-encoding",
 								"type": "text"
 							},
 							{
 								"key": "Connection",
 								"value": "keep-alive",
-								"name": "connection",
 								"type": "text"
 							},
 							{
@@ -441,12 +445,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/product/deleteProduct/:id",
-							"protocol": "http",
+							"raw": "https://fast-sushi-api.vercel.app/product/deleteProduct/:id",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"fast-sushi-api",
+								"vercel",
+								"app"
 							],
-							"port": "3000",
 							"path": [
 								"product",
 								"deleteProduct",
@@ -455,7 +460,778 @@
 							"variable": [
 								{
 									"key": "id",
+									"value": "11",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appetizer",
+			"item": [
+				{
+					"name": "Read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/appetizer/read/",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"appetizer",
+								"read",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Un test pour une entrée",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "image_url",
+									"value": "image_url",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/appetizer/create",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"appetizer",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/appetizer/read/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"appetizer",
+								"read",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
 									"value": "1",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/appetizer/delete/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"appetizer",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "13",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Edamame",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image_url",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/appetizer/update/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"appetizer",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plate",
+			"item": [
+				{
+					"name": "Read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/plate/read/",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"plate",
+								"read",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Un test pour un plat",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "image_url",
+									"value": "image_url",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/plate/create",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"plate",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/plate/read/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"plate",
+								"read",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "14",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/plate/delete/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"plate",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "14",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "13.9",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image_url",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/plate/update/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"plate",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dessert",
+			"item": [
+				{
+					"name": "Read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/dessert/read/",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"dessert",
+								"read",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Un test pour un dessert",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "image_url",
+									"value": "image_url",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/appetizer/create",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"appetizer",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/dessert/read/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"dessert",
+								"read",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/appetizer/delete/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"appetizer",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "15",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Dorayaki",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image_url",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://fast-sushi-api.vercel.app/dessert/update/:id",
+							"protocol": "https",
+							"host": [
+								"fast-sushi-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"dessert",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8",
 									"type": "string"
 								}
 							]
