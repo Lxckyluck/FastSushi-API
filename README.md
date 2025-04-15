@@ -60,12 +60,6 @@ If you have followed the previous steps correctly, you can start the project:
 npm run start
 ```
 
-- Using Yarn
-
-```bash
-Yarn start
-```
-
 - Using nodemon (recommended)
 
 ```bash
