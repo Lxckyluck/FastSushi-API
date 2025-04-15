@@ -8,6 +8,7 @@ const plateController = require("../controllers/plateController");
 router.get("/read", plateController.getAllplate);
 router.get("/read/:id", plateController.getplateById);
 router.post("/create", plateController.createplate);
+router.put("/update/:id", plateController.updateplateById)
 router.delete("/delete/:id", plateController.deleteplateById);
 
 module.exports = router;

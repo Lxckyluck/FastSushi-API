@@ -8,6 +8,7 @@ const appetizerController = require("../controllers/appetizerController");
 router.get("/read", appetizerController.getAllAppetizer);
 router.get("/read/:id", appetizerController.getAppetizerById);
 router.post("/create", appetizerController.createAppetizer);
+router.put("/update/:id", appetizerController.updateAppetizerById)
 router.delete("/delete/:id", appetizerController.deleteAppetizerById);
 
 module.exports = router;

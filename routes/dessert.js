@@ -8,6 +8,7 @@ const dessertController = require("../controllers/dessertController");
 router.get("/read", dessertController.getAlldessert);
 router.get("/read/:id", dessertController.getdessertById);
 router.post("/create", dessertController.createdessert);
+router.put("/update/:id", dessertController.updatedessertById)
 router.delete("/delete/:id", dessertController.deletedessertById);
 
 module.exports = router;
