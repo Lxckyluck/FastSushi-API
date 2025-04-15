@@ -57,6 +57,11 @@ exports.createdessert = async (req, res) => {
 exports.updatedessertById = async (req, res) => {
   const dessertId = req.params.id;
   const updateddessert = req.body;
+
+  if (!token) {
+    return res.status(401).json({ error: "Token missing" });
+  }
+  
   try {
     await dessert.updatedessert(dessertId, updateddessert);
     res.status(200).json({

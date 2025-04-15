@@ -57,6 +57,11 @@ exports.createAppetizer = async (req, res) => {
 exports.updateAppetizerById = async (req, res) => {
   const appetizerId = req.params.id;
   const updatedAppetizer = req.body;
+
+  if (!token) {
+    return res.status(401).json({ error: "Token missing" });
+  }
+  
   try {
     await appetizer.updateAppetizer(appetizerId, updatedAppetizer);
     res.status(200).json({

@@ -57,6 +57,11 @@ exports.createplate = async (req, res) => {
 exports.updateplateById = async (req, res) => {
   const plateId = req.params.id;
   const updatedplate = req.body;
+
+  if (!token) {
+    return res.status(401).json({ error: "Token missing" });
+  }
+  
   try {
     await plate.updateplate(plateId, updatedplate);
     res.status(200).json({
