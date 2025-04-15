@@ -96,4 +96,4 @@ The entire request collection can be found in the `FastSushi-Request` directory.
 
 > ⚠️ **Important**
 
-In the header of most of my request I use the environment variables "token" make sure create it in your own environment variables.
+In the header of most of my request I use the environment variables "token" make sure to create your own environment variables.
