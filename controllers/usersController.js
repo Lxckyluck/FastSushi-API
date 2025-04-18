@@ -12,6 +12,11 @@ exports.getAllUsers = async (req, res) => {
 
 exports.getUserById = async (req, res) => {
   const userId = req.params.id;
+
+  if (req.user.id !== parseInt(userId)) {
+    return res.status(403).json({ error: "Access denied" });
+  }
+
   try {
     const user = await User.getById(userId);
     if (!user) {
@@ -22,6 +27,7 @@ exports.getUserById = async (req, res) => {
     res.status(500).json({ error: "Error while fetching this user" });
   }
 };
+
 
 exports.createUser = async (req, res) => {
   const newUser = req.body;
