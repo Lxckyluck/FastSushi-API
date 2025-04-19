@@ -13,9 +13,9 @@ exports.getAllUsers = async (req, res) => {
 exports.getUserById = async (req, res) => {
   const userId = req.params.id;
 
-  if (req.user.id !== parseInt(userId)) {
-    return res.status(403).json({ error: "Access denied" });
-  }
+  // if (req.user.id !== parseInt(userId)) {
+  //   return res.status(403).json({ error: "Access denied" });
+  // }
 
   try {
     const user = await User.getById(userId);
