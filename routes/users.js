@@ -7,7 +7,7 @@ const { authenticateToken } = require('../modules/checkUser');
 
 // Users routes
 router.get("/read", userController.getAllUsers);
-router.get("/read/:id", userController.getUserById);
+router.get("/read/:id", authenticateToken, userController.getUserById);
 router.post("/signup", userController.createUser);
 router.post("/signin", userController.logUser);
 router.put("/logout/:id", userController.logoutUser);
