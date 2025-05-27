@@ -55,6 +55,33 @@ exports.createProduct = async (req, res) => {
   }
 };
 
+exports.createOffer = async (req, res) => {
+  const newProduct = req.body;
+  const token = req.headers.token;
+
+  const requiredFields = ["offer"];
+  if (!CheckBody(newProduct, requiredFields)) {
+    return res.status(400).json({
+      result: "Cannot add an offer",
+      error: "Missing required fields",
+    });
+  }
+
+  if (!token) {
+    return res.status(401).json({ error: "Token missing" });
+  }
+
+  try {
+    const insertId = await product.createProduct(newProduct);
+    res.status(201).json({
+      message: "Offer successfully created",
+      id: insertId,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Error while creating the product" });
+  }
+};
+
 exports.deleteProductById = async (req, res) => {
   const productId = req.params.id;
   const token = req.headers.token;

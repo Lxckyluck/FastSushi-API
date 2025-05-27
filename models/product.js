@@ -43,6 +43,20 @@ const Product = {
     }
   },
 
+  createOffer: async (productData) => {
+    const { offer } = productData;
+    try {
+      const [result] = await db.query(
+        "INSERT INTO product (offer) VALUES (?)",
+        [offer]
+      );
+      return result.insertId;
+    } catch (err) {
+      console.error("Error creating product:", err);
+      throw new Error("Error while creating the product");
+    }
+  },
+
   // SQL QUERY to delete a product by its ID using promise
   deleteProductById: async (id) => {
     try {
