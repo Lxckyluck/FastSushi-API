@@ -8,9 +8,9 @@ require("dotenv").config();
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const productsRouter = require("./routes/product");
-const appetizerRouter = require("./routes/appetizer")
-const plateRouter = require("./routes/plate")
-const dessertRouter = require("./routes/dessert")
+const appetizerRouter = require("./routes/appetizer");
+const plateRouter = require("./routes/plate");
+const dessertRouter = require("./routes/dessert");
 
 const app = express();
 const cors = require("cors");
@@ -29,8 +29,6 @@ app.use("/appetizer", appetizerRouter);
 app.use("/plate", plateRouter);
 app.use("/dessert", dessertRouter);
 
-app.listen(port, () => {
-  console.log(`Serveur lancé sur http://localhost:${port}`);
-});
+console.log(`Serveur lancé sur http://localhost:${port}`);
 
 module.exports = app;
