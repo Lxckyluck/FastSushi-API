@@ -4,7 +4,9 @@ const Product = {
   // SQL QUERY to get all products using promise
   getAll: async () => {
     try {
-      const [results] = await db.query("SELECT * FROM product");
+      const [results] = await db.query(
+        "SELECT * FROM product ORDER BY Offer DESC"
+      );
       return results;
     } catch (err) {
       console.error("Error fetching all products:", err);

@@ -58,6 +58,7 @@ exports.createProduct = async (req, res) => {
 exports.createOffer = async (req, res) => {
   const newProduct = req.body;
   const token = req.headers.token;
+  const productId = req.params.id;
 
   const requiredFields = ["offer"];
   if (!CheckBody(newProduct, requiredFields)) {
